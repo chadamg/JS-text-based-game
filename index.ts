@@ -7,9 +7,9 @@ var readline = rl.createInterface({
 //const prompt = require('prompt-sync')({ sigint: true });
 //importing modules
 var FCG = require("fantasy-content-generator");
-var GameStep = require("./gamesteps.js");
-var Dragon = require("./dragonclass.js");
-var Weapon = require("./weaponclass.js");
+var Step = require("./steps.js");
+var Dragon = require("./dragon.js");
+var Weapon = require("./weapon.js");
 
 
 //instances of weapon class
@@ -18,11 +18,11 @@ var weapon2 = new Weapon("" + FCG.MagicItems.generate().formattedData.title, 70)
 var place1 = FCG.Settlements.generate().establishments.formattedData.type;
 var place2 = FCG.Settlements.generate().establishments.formattedData.type;
 //instances of game steps class
-var firstMessage = new GameStep("You are on a journey to " + FCG.Names.generate().name + ", after travelling for 3 weeks you've arrived at a village to stop for a nights sleep. The following morning you awake to someone knocking on your door, you open the door to find a stranger who passes you a scroll, would you like to read the message? (yes/no)");
-var secondMessage = new GameStep("\"My name is " + FCG.Names.generate().name + " and I'm from " + FCG.Names.generate().name + ", we are under attack from dragons and have no one to help us. We need a brave hero to come and rescue us\" Would you like to accept this quest (yes/no) ");
-var thirdMessage = new GameStep("That's very brave of you, to prepare for the quest you'll need a weapon, with the time you have you can only travel to one of these places to acquire one item to assist you in the battle against the mighty dragons. Would you like to go to the " + place1 + " for a " + weapon1.name + " or the " + place2 + " for a " + weapon2.name + "? (type '1' or '2') ");
-var sixthMessage = new GameStep("That's correct! Are you ready to battle the dragon with your weapon (yes/no) ");
-var seventhMessage = new GameStep("Would you like to battle a red, green or blue dragon?");
+var firstMessage = new Step("You are on a journey to " + FCG.Names.generate().name + ", after travelling for 3 weeks you've arrived at a village to stop for a nights sleep. The following morning you awake to someone knocking on your door, you open the door to find a stranger who passes you a scroll, would you like to read the message? (yes/no)");
+var secondMessage = new Step("\"My name is " + FCG.Names.generate().name + " and I'm from " + FCG.Names.generate().name + ", we are under attack from dragons and have no one to help us. We need a brave hero to come and rescue us\" Would you like to accept this quest (yes/no) ");
+var thirdMessage = new Step("That's very brave of you, to prepare for the quest you'll need a weapon, with the time you have you can only travel to one of these places to acquire one item to assist you in the battle against the mighty dragons. Would you like to go to the " + place1 + " for a " + weapon1.name + " or the " + place2 + " for a " + weapon2.name + "? (type '1' or '2') ");
+var sixthMessage = new Step("That's correct! Are you ready to battle the dragon with your weapon (yes/no) ");
+var seventhMessage = new Step("Would you like to battle a red, green or blue dragon?");
 //instances of dragon class
 var red = new Dragon(FCG.Names.generate().name + " the Dragon", 70);
 var blue = new Dragon(FCG.Names.generate().name + " the Dragon", 60);
