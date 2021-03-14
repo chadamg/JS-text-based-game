@@ -10,6 +10,8 @@ var FCG = require("fantasy-content-generator");
 var GameStep = require("./gamesteps.js");
 var Dragon = require("./dragonclass.js");
 var Weapon = require("./weaponclass.js");
+
+
 //instances of weapon class
 var weapon1 = new Weapon("" + FCG.MagicItems.generate().formattedData.title, 20);
 var weapon2 = new Weapon("" + FCG.MagicItems.generate().formattedData.title, 70);
@@ -25,7 +27,7 @@ var seventhMessage = new GameStep("Would you like to battle a red, green or blue
 var red = new Dragon(FCG.Names.generate().name + " the Dragon", 70);
 var blue = new Dragon(FCG.Names.generate().name + " the Dragon", 60);
 var green = new Dragon(FCG.Names.generate().name + " the Dragon", 75);
-var steps = {
+var steps: {[index: string]:any} = {
     start: {
         message: firstMessage.message,
         yes: "secondStep",
@@ -112,7 +114,7 @@ var steps = {
     }
 };
 function newGame() {
-    readline.question("would you like to play again? (yes/no) ", function (input) {
+    readline.question("would you like to play again? (yes/no) ", function (input: String) {
         if (input === "yes") {
             startGame();
         }
@@ -127,12 +129,12 @@ function startGame() {
     function logStep() {
         var step = steps[currentStep];
         if (step) {
-            readline.question((step.message || "") + " ", function (input) {
+            readline.question((step.message || "") + " ", function (input: String) {
                 handleAnswer(input);
             });
         }
     }
-    function handleAnswer(answer) {
+    function handleAnswer(answer: any) {
         var step;
         if (answer === "yes") {
             step = steps[currentStep].yes;
@@ -171,14 +173,14 @@ function startGame() {
         }
         logStep();
     }
-    function isNumber(num) {
+    function isNumber(num: string) {
         var value = parseInt(num);
         return !isNaN(value);
     }
     console.clear();
     logStep();
 }
-function generateRandomNumber(max) {
+function generateRandomNumber(max: number) {
     return Math.floor(Math.random() * max);
 }
 startGame();
